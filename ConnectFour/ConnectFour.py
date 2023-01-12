@@ -1,6 +1,4 @@
 # create a connect four game
-import subprocess
-
 import random
 import time
 # Variables
@@ -20,7 +18,7 @@ winner = None
 
 #1 print board
 def printBoard(Board):
-  
+   
     print("  1   2   3   4   5   6   7")
     print("----------------------------")
     print("|",Board[5][0],"|", Board[5][1],"|", Board[5][2],"|", Board[5][3],"|", Board[5][4],"|", Board[5][5],"|", Board[5][6],"|")
@@ -98,10 +96,8 @@ def TokenPlacement(token):
                 printBoard(Board)
                 if winner == 'X':
                     print("\n*****YOU WIN!!!*****\n")
-                    subprocess.call(["afplay", "Victory.mp3"])
                 else:
                     print("\n***** You Lose *****")
-                    subprocess.call(["afplay", "Loser.mp3"])
                 exit()    #quits game after winner is declared
 
             return      # if slot is found return to switch turns
@@ -117,14 +113,20 @@ def TokenPlacement(token):
 
 def ComputerMove(Board):
     global LastMove
-    print("\nHmm...")
+    print(f"\nHmm...{LastMove+1}?")
+    
     time.sleep(1)
     token = LastMove + random.randint(-1,+1)
-    while token < 1 and token > 7:
-        if token < 1:
-            token = token +1
-        elif token > 7:
+    print(f"\nComputer Guess: {token+1}\n")
+
+    while token < 0 or token > 6:
+        print("inside while loop")
+        if token < 0:
             token = token + 1
+            print("\n correcting over")
+        elif token > 6:
+            print("\n correcting over")
+            token = token - 1
 
     print(f"\nIll go here: {token+1}" )
     time.sleep(1)
