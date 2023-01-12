@@ -4,7 +4,7 @@ import subprocess
 import random
 import time
 # Variables
-print("test")
+print("\n\nWelcome To Connect Four! Your will play as 'X' \n\n")
 Board = [[' ',' ',' ',' ',' ',' ',' '],
         [' ',' ',' ',' ',' ',' ',' '],
         [' ',' ',' ',' ',' ',' ',' '],
@@ -20,7 +20,7 @@ winner = None
 
 #1 print board
 def printBoard(Board):
-    print("printing game board:\n")
+  
     print("  1   2   3   4   5   6   7")
     print("----------------------------")
     print("|",Board[5][0],"|", Board[5][1],"|", Board[5][2],"|", Board[5][3],"|", Board[5][4],"|", Board[5][5],"|", Board[5][6],"|")
@@ -98,7 +98,7 @@ def TokenPlacement(token):
                 printBoard(Board)
                 if winner == 'X':
                     print("\n*****YOU WIN!!!*****\n")
-                    subprocess.call(["afplay", "victory.mp3"])
+                    subprocess.call(["afplay", "Victory.mp3"])
                 else:
                     print("\n***** You Lose *****")
                     subprocess.call(["afplay", "Loser.mp3"])
